@@ -16,7 +16,6 @@
       "!src/js/theme.js",
       "src/js/theme.js"
     ],
-    
     "dest": "assets/js"
   },
   "pug": {
