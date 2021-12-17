@@ -1,2 +1,6 @@
 node_modules
 build
+public/assets/css
+public/assets/js
+public/vendors
+public/index.html
