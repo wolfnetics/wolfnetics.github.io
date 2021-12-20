@@ -1,0 +1,38 @@
+append variables
+  -
+    const portfolio = [
+      {
+        img: `${CWD}assets/img/portfolio/asylum-in-serbia.jpg`,
+        title: 'Asylum in Serbia',
+        details: ' Android help app for refugees seeking asylum in Serbia',
+        url: 'https://dvuckovic.com/2015/10/07/asylum-in-serbia/'
+      },
+      {
+        img: `${CWD}assets/img/portfolio/rentaobjektiva.jpg`,
+        title: 'Web Design Portfolio',
+        details: 'Collection of web site projects',
+        url: 'https://dvuckovic.com/2011/06/01/web-design-portfolio/'
+      },
+      {
+        img: `${CWD}assets/img/portfolio/vue-bootstrap-icons.jpg`,
+        title: 'Vue Bootstrap Icons',
+        details: 'A Vue.js component for rendering Bootstrap Icons via the SVG sprite method ',
+        url: 'https://dvuckovic.com/2021/03/12/vue-bootstrap-icons/'
+      },
+    ]
+
+mixin PortfolioItem(config, index)
+  .row.mt-6.flex-center.justify-content-xl-evenly.px-xl-5
+    .col-md-7.col-lg-6(class=`${index % 2 === 0 && 'order-md-1'}`)
+      a(href=`${config.url}` target='_blank')
+        img.w-100.rounded-1(src=`${config.img}` alt=`${config.title}`)
+    .col-md-5.col-lg-4
+      h3.fs-xl-7.fs-lg-4.fs-md-3.mt-5.mt-md-0.lh-xs #{config.title}
+      p.fs-xl-1.ls-3.pe-xl-2 #{config.details}
+      a.btn.btn-primary(href=`${config.url}`) More info
+
+mixin Portfolio
+  +Section
+    +SectionTitle({ title: 'Portfolio' })
+    each item, index in portfolio
+      +PortfolioItem(item, index)

@@ -1,3 +1,24 @@
-## Safia a theme by ThemeWagon team.
----
-Thank you for using Safia See the "public" folder, you will find everything ready to use there. If you want to use the gulp based workflow, cd to this directory in your terminal and run this command: npm i && gulp# sofia-landing
+# wolfnetics.github.io
+
+A gulp/pug-based static website for [wolfnetics.com].
+
+## Install Dependencies
+
+```sh
+npm install
+```
+
+## Development Mode
+
+```sh
+npm start
+```
+
+## Production Build
+
+```sh
+npm run build
+```
+
+
+[wolfnetics.com]: https://wolfnetics.com

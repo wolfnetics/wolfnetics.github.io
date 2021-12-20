@@ -1,49 +1,32 @@
 append variables
   -
-    const footerIcon = [ 
+    const iconLinks = [
       {
-        img: `${CWD}assets/img/gallery/facebook-line1.svg`,
-        link:'#!',
-        alt:'fb'
+        icon: 'github',
+        url: 'https://github.com/wolfnetics',
+        label: 'Github',
       },
       {
-        img: `${CWD}assets/img/gallery/linkedin-line1.svg`,
-        link:'#!',
-        alt:'in'
+        image: 'dvuckovic',
+        url: 'https://dvuckovic.com',
+        label: 'dvuckovic.com',
       },
-      {
-        img: `${CWD}assets/img/gallery/twitter-line1.svg`,
-        link:'#!',
-        alt:'twitter'
-      },
-      {
-        img: `${CWD}assets/img/gallery/instagram-line1.svg`,
-        link:'#!',
-        alt:'instragram'
-      }
     ]
-  -
-    const footerLinks = [
-      {
-        name: ' Terms & conditon ',
-        link: '#!'
-      },
-      {
-        name: 'Privacy Policy ',
-        link: '#!'
-      }
-    ]
+  - const year = (new Date).getFullYear();
+
 mixin Footer
-  +Section.bg-secondary
+  +Section(style={'background-color': 'var(--bs-gray-1100)'})
     .row
-      .col-xl-3.text-center.text-xl-start
-        each item in footerIcon
-          a(href=`${item.link}`)
-            img.footer-img(src=`${item.img}` alt=`${item.alt}` class='me-xl-5 me-3' style={width:'20px',height:'20px'})
+      .col-xl-4.text-center.text-xl-start
+        each link in iconLinks
+          a.icon-link.text-300.me-2(href=`${link.url}` target='_blank')
+            if link.icon
+              i(class=`bi bi-${link.icon} fs-4` role='img' aria-label=`${link.label}`)
+            else if link.image
+              img(src=`${CWD}assets/img/brands/${link.image}.png` height='30' style={'vertical-align': '-23%'})
       .col-xl-4.pt-2.pt-xl-0
-        p.mb-0.text-center.text-xl-end
-          each item,index in footerLinks
-            a.text-300.text-decoration-none.footer-link(href=`${item.link}` class=  index!=0 && `ps-4` ) #{item.name} 
-      .col-xl-5.pt-2.pt-xl-0.text-center.text-xl-end
-        p.mb-0 &copy; This template is made with ❤️  by 
-          a.text-300(href='https://themewagon.com/' target='_blank')  ThemeWagon
+        p.mb-0.text-center.text-muted
+          small This website does not collect any personal information.
+      .col-xl-4.pt-2.pt-xl-0.text-center.text-xl-end
+        p.mb-0 &copy; #{year} 
+          span.text-300 wolfnetics

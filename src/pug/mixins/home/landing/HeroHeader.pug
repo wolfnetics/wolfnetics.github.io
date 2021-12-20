@@ -1,8 +1,8 @@
 mixin HeroHeader
-  +Section.mt-6
-    .row.align-items-center
+  +Section({ className: 'hero-bg', image: `${CWD}assets/img/dashboard.png`})
+    .row.align-items-end.hero-container
       .col-md-9.col-lg-8.col-xl-5
-        h1.display-3.lh-sm Landing Template for Startups
-      .col-md-9.col-xl-5
-        p.fs-2 Our landing page template works on all devices, and browsers, so you only have to set it up once, and get beautiful results forever.
-        button.btn.btn-primary.mt-3 Pricing and Plans
+        h1.display-3.lh-xs.mb-0 Modern Solutions for the Modern Age
+      .col-md-9.col-xl-5.mt-3
+        p.text-white.fs-2 We provide bleeding-edge solutions on most platforms, according to your design specifications and needs. Get in touch and benefit today from our decade-long expertise.
+        a.btn.btn-primary.mt-3(href='#solutions') Go to Solutions

@@ -46,13 +46,13 @@ label,
 .navbar,
 .pagination,
 .valid-feedback,
-.invalid-feedback { font-family: $font-family-sans-serif; }
-pre{ 
+.invalid-feedback { font-family: $font-family-base; }
+pre {
   margin: 0;
   transform: translate3d(0,0,0);
 }
-strong{ font-weight: $font-weight-semi-bold; }
-label{ 
-  font-weight: $font-weight-medium !important; 
+strong { font-weight: $font-weight-semi-bold; }
+label {
+  font-weight: $font-weight-medium !important;
   margin-bottom: map-get($spacers, 2);
 }

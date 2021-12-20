@@ -121,30 +121,39 @@
   .nav-link {
     color: $gray-500;
     font-weight: $font-weight-medium;
-    font-family: $font-family-sans-serif;
+    font-family: $font-family-base;
     &.active {
       color: $primary
     }
   }
 }
 
-
-
-// Pricing
-
-.card-price {
-  padding-left: .75rem;
-  padding-right: .75rem;
-  text-align: center;
-}
-
-// navbars
-
+// Navbars
 .backdrop{
   backdrop-filter: blur(3px);
 }
 
-// safia theme
-.footer-img:hover, .footer-link:hover {
+// Hero header
+.hero-bg {
+  background-size: contain;
+}
+
+.hero-container {
+  min-height: auto;
+  @include media-breakpoint-up(md) {
+    min-height: 400px;
+  }
+  @include media-breakpoint-up(lg) {
+    min-height: 500px;
+  }
+  @include media-breakpoint-up(xl) {
+    min-height: 600px;
+  }
+}
+
+// Footer links
+.icon-link:hover,
+.footer-img:hover,
+.footer-link:hover {
   opacity: .8;
 }

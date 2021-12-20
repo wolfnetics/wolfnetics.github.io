@@ -43,10 +43,10 @@ const hexToRgb = (hexValue) => {
   );
   return result
     ? [
-        parseInt(result[1], 16),
-        parseInt(result[2], 16),
-        parseInt(result[3], 16),
-      ]
+      parseInt(result[1], 16),
+      parseInt(result[2], 16),
+      parseInt(result[3], 16),
+    ]
     : null;
 };
 
@@ -56,30 +56,30 @@ const rgbaColor = (color = "#fff", alpha = 0.5) =>
 /* --------------------------------- Colors --------------------------------- */
 
 const colors = {
-  primary: "#0057FF",
-  secondary: "#748194",
-  success: "#00d27a",
-  info: "#27bcfd",
-  warning: "#f5803e",
-  danger: "#e63757",
-  light: "#f9fafd",
-  dark: "#000",
+  primary: '#0057FF',
+  secondary: '#748194',
+  success: '#00d27a',
+  info: '#27bcfd',
+  warning: '#f5803e',
+  danger: '#e63757',
+  light: '#f9fafd',
+  dark: '#000',
 };
 
 const grays = {
-  white: "#fff",
-  100: "#f9fafd",
-  200: "#edf2f9",
-  300: "#d8e2ef",
-  400: "#b6c1d2",
-  500: "#9da9bb",
-  600: "#748194",
-  700: "#162044", //
-  800: "#4d5969",
-  900: "#070E27", // bg dark
-  1000: "#232e3c",
-  1100: "#0b1727",
-  black: "#000",
+  white: '#fff',
+  100: '#f9fafd',
+  200: '#edf2f9',
+  300: '#d8e2ef',
+  400: '#b6c1d2',
+  500: '#9da9bb',
+  600: '#748194',
+  700: '#330099',
+  800: '#4d5969',
+  900: '#000033',
+  1000: '#232e3c',
+  1100: '#000022',
+  black: '#000',
 };
 
 const hasClass = (el, className) => {
@@ -89,6 +89,10 @@ const hasClass = (el, className) => {
 
 const addClass = (el, className) => {
   el.classList.add(className);
+};
+
+const removeClass = (el, className) => {
+  el.classList.remove(className);
 };
 
 const getOffset = (el) => {
@@ -113,15 +117,15 @@ const isScrolledIntoView = (el) => {
 
   return {
     all:
-      top >= window.pageYOffset &&
-      left >= window.pageXOffset &&
-      top + height <= window.pageYOffset + window.innerHeight &&
-      left + width <= window.pageXOffset + window.innerWidth,
+      top >= window.pageYOffset
+      && left >= window.pageXOffset
+      && top + height <= window.pageYOffset + window.innerHeight
+      && left + width <= window.pageXOffset + window.innerWidth,
     partial:
-      top < window.pageYOffset + window.innerHeight &&
-      left < window.pageXOffset + window.innerWidth &&
-      top + height > window.pageYOffset &&
-      left + width > window.pageXOffset,
+      top < window.pageYOffset + window.innerHeight
+      && left < window.pageXOffset + window.innerWidth
+      && top + height > window.pageYOffset
+      && left + width > window.pageXOffset,
   };
 };
 
@@ -138,46 +142,16 @@ const getBreakpoint = (el) => {
   const classes = el && el.classList.value;
   let breakpoint;
   if (classes) {
-    breakpoint =
-      breakpoints[
-        classes
-          .split(" ")
-          .filter((cls) => cls.includes("navbar-expand-"))
-          .pop()
-          .split("-")
-          .pop()
-      ];
+    breakpoint = breakpoints[
+      classes
+        .split(' ')
+        .filter((cls) => cls.includes('navbar-expand-'))
+        .pop()
+        .split('-')
+        .pop()
+    ];
   }
   return breakpoint;
-};
-
-/* --------------------------------- Cookie --------------------------------- */
-
-const setCookie = (name, value, expire) => {
-  const expires = new Date();
-  expires.setTime(expires.getTime() + expire);
-  document.cookie = name + "=" + value + ";expires=" + expires.toUTCString();
-};
-
-const getCookie = (name) => {
-  var keyValue = document.cookie.match("(^|;) ?" + name + "=([^;]*)(;|$)");
-  return keyValue ? keyValue[2] : keyValue;
-};
-
-const settings = {
-  tinymce: {
-    theme: "oxide",
-  },
-  chart: {
-    borderColor: "rgba(255, 255, 255, 0.8)",
-  },
-};
-
-/* -------------------------- Chart Initialization -------------------------- */
-
-const newChart = (chart, config) => {
-  const ctx = chart.getContext("2d");
-  return new window.Chart(ctx, config);
 };
 
 /* ---------------------------------- Store --------------------------------- */
@@ -195,8 +169,8 @@ const setItemToStore = (key, payload, store = localStorage) =>
 const getStoreSpace = (store = localStorage) =>
   parseFloat(
     (
-      escape(encodeURIComponent(JSON.stringify(store))).length /
-      (1024 * 1024)
+      escape(encodeURIComponent(JSON.stringify(store))).length
+      / (1024 * 1024)
     ).toFixed(2)
   );
 
@@ -208,6 +182,7 @@ const utils = {
   getData,
   hasClass,
   addClass,
+  removeClass,
   hexToRgb,
   rgbaColor,
   colors,
@@ -215,10 +190,6 @@ const utils = {
   getOffset,
   isScrolledIntoView,
   getBreakpoint,
-  setCookie,
-  getCookie,
-  newChart,
-  settings,
   getItemFromStore,
   setItemToStore,
   getStoreSpace,

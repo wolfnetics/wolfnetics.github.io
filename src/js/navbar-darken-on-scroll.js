@@ -40,7 +40,7 @@ const navbarDarkenOnScroll = () => {
     const { backgroundImage } = window.getComputedStyle(navbar);
     // const transition = "background-color 0.35s ease";
     const borderColor = utils.hexToRgb(allColors['700'])
-    const paddingTop = 48;
+    const paddingTop = 16;
     navbar.style.paddingTop = `${paddingTop}px`;
     navbar.style.backgroundImage = "none";
     navbar.style.borderBottom = "none";
@@ -55,16 +55,12 @@ const navbarDarkenOnScroll = () => {
       navbar.style.borderBottom = `1px solid rgba(${borderColor[0]}, ${borderColor[1]}, ${borderColor[2]}, ${alpha})`;
       navbar.style.paddingTop = `${paddingTop * (1 - alpha)}px`;
       navbar.style.backgroundImage =
-        alpha > 0 
+        alpha > 0
           ? backgroundImage
           : "none";
       alpha > 0.2 ? navbar.classList.add(shadowName):navbar.classList.remove(shadowName);
     });
-    
-    
-    
-    
-    
+
     // Toggle bg class on window resize
     // utils.resize(() => {
     //   const breakPoint = utils.getBreakpoint(navbar);

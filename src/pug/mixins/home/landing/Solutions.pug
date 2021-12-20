@@ -1,0 +1,71 @@
+append variables
+  -
+    const services = [
+      {
+        id: 'automated-workflows',
+        icon: 'list-check',
+        title: 'Automated Workflows',
+        summary: 'We can automate most workflows according to your needs and convert them into pipelines for both Continuous Integration and Deployment.',
+        description: 'Whether we are talking about running a few tests on push or triggering complex pipelines across multiple of services with resulting artifacts, we got you covered. Github Actions, Travis CI, Circle CI are just some of the platforms we can support. Additionally, we can provide custom solutions for on-premise hosting, if that is your cup of tea.'
+      },
+      {
+        id: 'mobile-apps',
+        icon: 'phone',
+        title: 'Mobile Apps',
+        summary: 'We can provide beautiful cross-platform apps served by the same codebase and high test coverage. Integration with existing services while maintaining high-level of security is our specialty.',
+        description: 'Support for both latest Android and iOS platforms is a given, but we can provide specialized targets as well. Responsive UI designs that follow vendor guidelines, but still possess something special and unique. Benefit from our help in navigating ever-changing publishing platforms and base your product on best practices.'
+      },
+      {
+        id: 'web-apps',
+        icon: 'globe',
+        title: 'Web Applications',
+        summary: 'Web is ubiquitous and we can offer both front end and back end development according to your needs. Extensive experience in web field allows us to be very competitive regarding the price/quality ratio.',
+        description: 'We support latest frameworks and can easily adapt to requirements you might have. Comprehensive end-to-end testing and Test Driven Development practices are our mainstay. Unless you provide us with design, we can offer custom solutions of any size.'
+      },
+      {
+        id: 'consulting',
+        icon: 'lightbulb',
+        title: 'Consulting Services',
+        summary: 'If you prefer only advice or guidance for complex projects, we are at your disposal. Experience in training and technical writing helps us get the right message a-cross.',
+        description: 'Our areas of expertise include Software Development, Scalable Deployment and System Architecture. If you want a suggestion, we will probably be able to help.'
+      },
+      {
+        icon: 'check2-circle',
+        title: 'Quality Assurance',
+        summary: 'In case you already have a solution and just require a code review, we can help. We can provide guidance on fixing future problems and security issues.',
+      },
+      {
+        icon: 'rulers',
+        title: 'Tailored Solutions',
+        summary: 'Custom development is our specialty. No matter which tools you depend on or how close to a pixel-perfect design you strive, we will do our best to meet the expectations.',
+      }
+    ]
+
+mixin Solutions
+  +Section
+    a(name='solutions')
+    h2.display-6 Solutions
+    p.fs-2 We provide numerous types of services &amp; solutions across wide range of platforms.
+    p.text-muted If you don't see something listed, please get in touch for a personalized quote.
+    .row
+      each serviceItem in services
+        +serviceItem(serviceItem)
+
+mixin serviceItem(item)
+  .col-md-6.mt-4
+    div.card.border.rounded-1.border-700.h-100.solutions.bg-dark
+      div.row.g-0
+        div.col-auto.ps-3.pt-4
+          i(class=`bi bi-${item.icon} display-4` role='img' aria-label=`${item.title}`)
+        div.col
+          div.card-body.my-3
+            h3.card-title.display-7 #{item.title}
+            p.card-text #{item.summary}
+            if item.description
+              a.btn.btn-primary.stretched-link(href='#' data-bs-toggle='modal' data-bs-target=`#modal-${item.id}`) More info
+              div.modal.fade(id=`modal-${item.id}` tabindex='-1' aria-labelledby=`modal-${item.id}` aria-hidden='true')
+                div.modal-dialog
+                  div.modal-content
+                    h3.modal-title.display-7.text-dark.mt-3.ms-3(id=`modal-${item.id}`) #{item.title}
+                    div.modal-body #{item.description}
+                    button.btn.btn-primary.mx-3.mb-3(data-bs-dismiss='modal') Okay
