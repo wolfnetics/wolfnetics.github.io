@@ -1,11 +1,11 @@
-const gulp = require("gulp");
-const { paths, baseDir, browserSync, isProd } = require("./utils.js");
-const { compilePug } = require("./pug.gulp.js");
+const gulp = require('gulp');
+const { paths, baseDir, browserSync } = require('./utils');
+const { compilePug } = require('./pug.gulp');
 
 /*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 |  Watcher
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
-gulp.task("watch", () => {
+gulp.task('watch', () => {
   // BrowserSync
   browserSync.init({
     server: { baseDir },
@@ -22,9 +22,9 @@ gulp.task("watch", () => {
   };
 
   gulp.watch(paths.pug.src.all, gulp.series(updating));
-  gulp.watch(paths.style.src, gulp.series("style"));
-  // gulp.watch(gulp.series("script"));
-  gulp.watch(paths.script.src, gulp.series("script"));
+  gulp.watch(paths.style.src, gulp.series('style'));
+  // gulp.watch(gulp.series('script'));
+  gulp.watch(paths.script.src, gulp.series('script'));
   gulp.watch(
     paths.watch.map((dir) => `${paths.dir.dev}/${dir}`),
     gulp.series(updating)

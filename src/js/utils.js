@@ -3,21 +3,22 @@
 /* -------------------------------------------------------------------------- */
 const docReady = (fn) => {
   // see if DOM is already available
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", fn);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', fn);
   } else {
     setTimeout(fn, 1);
   }
 };
 
-const resize = (fn) => window.addEventListener("resize", fn);
+const resize = (fn) => window.addEventListener('resize', fn);
 
 const isIterableArray = (array) => Array.isArray(array) && !!array.length;
 
 const camelize = (str) => {
-  const text = str.replace(/[-_\s.]+(.)?/g, (_, c) =>
-    c ? c.toUpperCase() : ""
-  );
+  const text = str.replace(/[-_\s.]+(.)?/g, (_, c) => {
+    if (c) return c.toUpperCase();
+    return '';
+  });
   return `${text.substr(0, 1).toLowerCase()}${text.substr(1)}`;
 };
 
@@ -33,7 +34,7 @@ const getData = (el, data) => {
 
 const hexToRgb = (hexValue) => {
   let hex;
-  hexValue.indexOf("#") === 0
+  hexValue.indexOf('#') === 0
     ? (hex = hexValue.substring(1))
     : (hex = hexValue);
   // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
@@ -50,7 +51,7 @@ const hexToRgb = (hexValue) => {
     : null;
 };
 
-const rgbaColor = (color = "#fff", alpha = 0.5) =>
+const rgbaColor = (color = '#fff', alpha = 0.5) =>
   `rgba(${hexToRgb(color)}, ${alpha})`;
 
 /* --------------------------------- Colors --------------------------------- */

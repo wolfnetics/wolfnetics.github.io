@@ -1,7 +1,7 @@
 const gulp = require('gulp');
 const del = require('del');
 
-const { paths, baseDir, version } = require('./utils.js');
+const { paths, baseDir } = require('./utils');
 
 /*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 |  Clean

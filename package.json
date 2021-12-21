@@ -8,6 +8,8 @@
     "build": "cross-env MODE=PROD gulp build",
     "build:test": "cross-env MODE=PROD gulp build:test",
     "build:serve": "cross-env MODE=PROD gulp build:serve",
+    "lint": "eslint gulp src",
+    "pretest": "npm run lint",
     "test": "start-server-and-test build:serve 3000 test:e2e",
     "test:e2e": "cypress run --quiet",
     "test:e2e:debug": "cypress open"

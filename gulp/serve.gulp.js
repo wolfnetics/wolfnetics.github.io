@@ -1,6 +1,6 @@
 const gulp = require('gulp');
-const { baseDir, browserSync } = require('./utils.js');
-const { compilePug } = require('./pug.gulp.js');
+const { baseDir, browserSync } = require('./utils');
+const { compilePug } = require('./pug.gulp');
 
 /*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 |  Server

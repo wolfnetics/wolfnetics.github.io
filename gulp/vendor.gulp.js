@@ -6,7 +6,7 @@ const {
   vendors,
   baseDir,
   isIterableArray,
-} = require('./utils.js');
+} = require('./utils');
 
 /*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 |  Vendor

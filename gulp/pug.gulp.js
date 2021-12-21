@@ -8,7 +8,14 @@ const gulpPug = require('gulp-pug');
 const gulpJsbeautifier = require('gulp-jsbeautifier');
 const ansi = require('ansi');
 
-const { name, version, paths, baseDir, isProd } = require('./utils.js');
+const {
+  name,
+  version,
+  paths,
+  baseDir,
+  isProd
+} = require('./utils');
+
 const cursor = ansi(process.stdout);
 
 const options = {

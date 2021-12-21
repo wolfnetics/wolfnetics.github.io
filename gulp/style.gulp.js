@@ -8,7 +8,7 @@ const gulpIf = require('gulp-if');
 const clone = require('gulp-clone');
 const merge = require('merge-stream');
 
-const { paths, baseDir, browserSync } = require('./utils.js');
+const { paths, baseDir, browserSync } = require('./utils');
 
 const getOption = (outputStyle) => ({
   outputStyle,

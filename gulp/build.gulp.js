@@ -1,5 +1,5 @@
 const gulp = require('gulp');
-const { paths, version } = require('./utils.js');
+const { paths } = require('./utils');
 
 /* -------------------------------------------------------------------------- */
 /*                                    Build                                   */
