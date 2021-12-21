@@ -1,0 +1,41 @@
+name: ci
+
+# Controls when the workflow will run
+on:
+
+  # Trigger the workflow on all pushes, except on tag creation
+  push:
+    branches:
+    - '**'
+    tags-ignore:
+    - '**'
+
+  # Trigger the workflow on all pull requests
+  pull_request:
+
+  # Allow workflow to be dispatched on demand
+  workflow_dispatch:
+
+jobs:
+  ci:
+    name: ci
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Checkout 🛎️
+      uses: actions/checkout@v2
+
+    - name: Install 📦
+      run: npm ci
+
+    # - name: Test ✅
+    #   run: npm test
+
+    - name: Deploy 🚀
+      if: success() && github.ref == 'refs/heads/main'
+      uses: crazy-max/ghaction-github-pages@v2
+      with:
+        commit_message: Deployed to Github Pages.
+        fqdn: wolfnetics.com
+        build_dir: build/
+      env:
+        GITHUB_TOKEN: ${{ secrets.GH_PAT }}
