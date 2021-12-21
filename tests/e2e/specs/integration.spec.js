@@ -18,12 +18,15 @@ describe('Integration tests', () => {
         cy.get('@button').should('have.text', 'Contact Us');
         cy.get(`a[name="${anchorName}"]`).should('exist');
 
-        cy.get('h2[data-title="Contact"]').as('heading');
-        cy.isNotInViewport('@heading');
         cy.get('@button').click();
         cy.hash().should('eq', `#${anchorName}`);
-        cy.isInViewport('@heading');
         cy.go('back');
+    });
+
+    it('has the hero header', () => {
+        cy.get('.hero-bg').should('have.css', 'background-image');
+        cy.get('.hero-container h1').should('exist');
+        cy.get('.hero-container p').should('exist');
     });
 
     it('has the solutions button', () => {
@@ -33,11 +36,8 @@ describe('Integration tests', () => {
         cy.get('@button').should('have.text', 'Go to Solutions');
         cy.get(`a[name="${anchorName}"]`).should('exist');
 
-        cy.get('h2[data-title="Solutions"]').as('heading');
-        cy.isNotInViewport('@heading');
         cy.get('@button').click();
         cy.hash().should('eq', `#${anchorName}`);
-        cy.isInViewport('@heading');
         cy.go('back');
     });
 
@@ -48,9 +48,10 @@ describe('Integration tests', () => {
     });
 
     it('has the list of solutions', () => {
+        cy.get('h2[data-title="Solutions"]').should('exist');
+
         cy.get('.solutions').each((item) => {
             cy.get(item).as('solution');
-            cy.get('@solution').scrollIntoView();
             cy.get('@solution').within(() => {
                 cy.get('i[role="img"]').should('exist');
                 cy.get('h3.card-title').should('exist');
@@ -82,9 +83,10 @@ describe('Integration tests', () => {
     });
 
     it('has the portfolio', () => {
+        cy.get('h2[data-title="Portfolio"]').should('exist');
+
         cy.get('.portfolio').each((item) => {
             cy.get(item).as('portfolio');
-            cy.get('@portfolio').scrollIntoView();
             cy.get('@portfolio').within(() => {
                 cy.get('a[target="_blank"]').should('exist');
                 cy.get('img.w-100').should('exist');
@@ -96,8 +98,7 @@ describe('Integration tests', () => {
     });
 
     it('has the contact form', () => {
-        cy.get('h2[data-title="Contact"]').as('heading');
-        cy.get('@heading').scrollIntoView();
+        cy.get('h2[data-title="Contact"]').should('exist');
 
         cy.get('input[name="subject"]').as('subject');
         cy.get('textarea[name="message"]').as('message');
