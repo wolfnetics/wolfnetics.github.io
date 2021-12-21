@@ -1,4 +1,4 @@
 mixin SectionTitle({title, description})
   .text-center
     p.fs-2.ls-2 #{description}
-    h2.display-6 #{title}
+    h2.display-6(data-title=title) #{title}

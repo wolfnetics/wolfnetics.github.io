@@ -9,9 +9,3 @@ gulp.task('build:static', () => gulp.src(paths.watch.map(dir => `${dir}/**/*`), 
   base: `./${paths.dir.dev}`
 })
   .pipe(gulp.dest(paths.dir.prod)));
-
-gulp.task('build:push', () => gulp.src('**/*', {
-  cwd: paths.dir.prod,
-  base: `./${paths.dir.prod}`
-})
-  .pipe(gulp.dest(`live/${version}`)));

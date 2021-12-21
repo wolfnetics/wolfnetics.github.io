@@ -22,7 +22,7 @@ append variables
     ]
 
 mixin PortfolioItem(config, index)
-  .row.mt-6.flex-center.justify-content-xl-evenly.px-xl-5
+  .row.mt-6.flex-center.justify-content-xl-evenly.px-xl-5.portfolio
     .col-md-7.col-lg-6(class=`${index % 2 === 0 && 'order-md-1'}`)
       a(href=`${config.url}` target='_blank')
         img.w-100.rounded-1(src=`${config.img}` alt=`${config.title}`)

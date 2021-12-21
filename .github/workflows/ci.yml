@@ -27,8 +27,8 @@ jobs:
     - name: Install 📦
       run: npm ci
 
-    # - name: Test ✅
-    #   run: npm test
+    - name: Test ✅
+      run: npm test
 
     - name: Deploy 🚀
       if: success() && github.ref == 'refs/heads/main'

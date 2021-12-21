@@ -1,16 +1,10 @@
-append variables
-  -
-    var contactIntro = {
-      title: 'Contact'
-    }
-
 mixin ContactForm
   +Section
     a(name='contact-form')
-    +SectionTitle(contactIntro)
+    +SectionTitle({ title: 'Contact' })
     div.row
       div.col-lg-6.mt-3.mx-auto
-        form.contact-form
+        form.contact-form(action='#')
           div.mb-3
             label.form-label(for='subject') Subject
             input.form-control(name='subject' type='text' placeholder='Subject' required)

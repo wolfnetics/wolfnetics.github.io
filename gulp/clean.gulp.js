@@ -14,4 +14,3 @@ gulp.task('clean', () =>
   ])
 );
 gulp.task('clean:build', () => del(paths.dir.prod));
-gulp.task('clean:live', () => del(`live/${version}`));

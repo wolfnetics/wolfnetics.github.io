@@ -14,7 +14,7 @@ gulp.task('compile:all', gulp.parallel('compile', 'pug'));
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
 gulp.task('build', gulp.series('clean:build', 'build:static', 'compile:all'));
 gulp.task('build:test', gulp.series('build', 'watch'));
-gulp.task('live', gulp.series('clean:live', 'build', 'build:push'));
+gulp.task('build:serve', gulp.series('build', 'serve'));
 
 /*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 |  Run development environment

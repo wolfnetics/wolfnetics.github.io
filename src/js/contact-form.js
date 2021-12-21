@@ -9,6 +9,7 @@ const sendMail = (contactForm, subject, message) => {
   const anchor = document.createElement('a');
   anchor.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
   contactForm.after(anchor);
+  if (window.Cypress) return;
   anchor.click();
   anchor.remove();
 };
