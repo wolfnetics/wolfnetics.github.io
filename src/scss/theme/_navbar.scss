@@ -1,4 +1,11 @@
-.navbar-brand img{
-    width: 303px;
-    height: 70px;
+.navbar-brand {
+  flex: min-content;
+
+  img {
+    max-width: 80%;
+    max-height: 70px;
+    @include media-breakpoint-up(sm) {
+      max-width: auto;
+    }
+  }
 }

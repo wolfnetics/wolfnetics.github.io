@@ -17,16 +17,16 @@ append variables
 mixin Footer
   +Section(style={'background-color': 'var(--bs-gray-1100)'})
     .row
-      .col-xl-4.text-center.text-xl-start
+      .col-xl-4.text-center.text-xl-start.footer-links
         each link in iconLinks
           a.icon-link.text-300.me-2(href=`${link.url}` target='_blank')
             if link.icon
               i(class=`bi bi-${link.icon} fs-4` role='img' aria-label=`${link.label}`)
             else if link.image
               img(src=`${CWD}assets/img/brands/${link.image}.png` height='30' style={'vertical-align': '-23%'})
-      .col-xl-4.pt-2.pt-xl-0
+      .col-xl-4.pt-2.pt-xl-0.footer-disclaimer
         p.mb-0.text-center.text-muted
           small This website does not collect any personal information.
-      .col-xl-4.pt-2.pt-xl-0.text-center.text-xl-end
+      .col-xl-4.pt-2.pt-xl-0.text-center.text-xl-end.footer-copyright
         p.mb-0 &copy; #{year} 
-          span.text-300 wolfnetics ltd
+          span.text-300 wolfnetics limited

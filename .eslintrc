@@ -19,5 +19,12 @@
   },
   "parserOptions": {
     "ecmaVersion": 2020
+  },
+  "globals": {
+    "describe": true,
+    "it": true,
+    "cy": true,
+    "expect": true,
+    "Cypress": true
   }
 }

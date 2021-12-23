@@ -1,8 +1,9 @@
 mixin HeroHeader
-  +Section({ className: 'hero-bg', image: `${CWD}assets/img/dashboard.png`})
+  +Background({ className: 'hero-bg', image: `${CWD}assets/img/hero.jpg`})
+  +Section
     .row.align-items-end.hero-container
       .col-md-9.col-lg-8.col-xl-5
-        h1.display-3.lh-xs.mb-0 Modern Solutions for the Modern Age
+        h1.display-3.lh-xs.mb-0.hero-shadow Modern Solutions for the Modern Age
       .col-md-9.col-xl-5.mt-3
-        p.text-white.fs-2 We provide bleeding-edge solutions on most platforms, according to your design specifications and needs. Get in touch and benefit today from our decade-long expertise.
+        p.text-white.fs-2.hero-shadow We provide bleeding-edge solutions on most platforms, according to your design specifications and needs. Get in touch and benefit today from our decade-long expertise.
         a.btn.btn-primary.mt-3(href='#solutions') Go to Solutions

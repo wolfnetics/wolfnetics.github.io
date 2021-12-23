@@ -129,13 +129,24 @@
 }
 
 // Navbars
-.backdrop{
+.backdrop {
   backdrop-filter: blur(3px);
 }
 
 // Hero header
 .hero-bg {
-  background-size: contain;
+  min-height: 800px;
+  @include media-breakpoint-up(md) {
+    min-height: 100vw;
+  }
+  @include media-breakpoint-up(lg) {
+    min-height: 80vw;
+  }
+  @include media-breakpoint-up(xl) {
+    min-height: 60vw;
+  }
+  background-size: cover;
+  background-position: top center;
 }
 
 .hero-container {
@@ -149,6 +160,10 @@
   @include media-breakpoint-up(xl) {
     min-height: 600px;
   }
+}
+
+.hero-shadow {
+  text-shadow: rgba(0, 0, 0, 0.618) 0 0 2rem;
 }
 
 // Footer links
