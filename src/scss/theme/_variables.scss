@@ -230,14 +230,9 @@ $border-radius-pill:          50rem !default;
 //*-----------------------------------------------
 //|   Fonts Families
 //-----------------------------------------------*/
-$font-family-sans-serif: 'changeling-neo', 'sans-serif', -apple-system, BlinkMacSystemFont,
-  'Segoe UI', 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji',
-  'Segoe UI Emoji', 'Segoe UI Symbol' !default;
-$font-family-monospace: Menlo, Monaco, Consolas,
-  'Liberation Mono', 'Courier New', monospace !default;
-$font-family-base: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-   'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji',
-  'Segoe UI Emoji', 'Segoe UI Symbol' !default;
+$font-family-sans-serif: changeling-neo, sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', 'Arial', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+$font-family-monospace: Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+$font-family-base: forma-djr-micro, sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', 'Arial', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
 
 //*-----------------------------------------------
 //|   Fonts
