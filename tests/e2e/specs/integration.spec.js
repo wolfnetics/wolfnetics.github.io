@@ -153,4 +153,12 @@ describe('Integration tests', () => {
   it('has the copyright text in footer', () => {
     cy.get('.footer-copyright p').contains(`© ${new Date().getFullYear()}`);
   });
+
+  it('has the required company information', () => {
+    cy.get('p.company-info').as('company-info');
+    cy.get('@company-info').contains('Registration Address:');
+    cy.get('@company-info').contains('Company Name:');
+    cy.get('@company-info').contains('Registration Number:');
+    cy.get('.footer-copyright p').contains('wolfnetics ltd');
+  });
 });
