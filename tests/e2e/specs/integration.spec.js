@@ -43,7 +43,7 @@ describe('Integration tests', () => {
 
   it('has the brand logos', () => {
     cy.get('.brand-logo').within(() => {
-      cy.get('img').should('have.attr', 'style', 'height:100px;');
+      cy.get('img').should('have.attr', 'style', 'height:85px;');
     });
   });
 

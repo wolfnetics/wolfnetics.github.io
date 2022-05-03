@@ -13,13 +13,17 @@ append variables
         src: `${CWD}assets/img/brands/smartrace.png`,
         alt: 'SmartRace'
       },
+      {
+        src: `${CWD}assets/img/brands/zammad.png`,
+        alt: 'Zammad'
+      },
     ]
 
 mixin Brands
   +Section
     .row.mx-md-5.px-md-5.mt-5.justify-content-evenly
       each item in brands
-        .col-auto.mt-3.brand-logo
-          img(src=`${item.src}` alt=`${item.alt}` style={height: '100px'})
+        .col-auto.mt-4.brand-logo
+          img(src=`${item.src}` alt=`${item.alt}` style={height: '85px'})
     .px-xl-8.px-md-7
       hr.mt-7.text-1000
