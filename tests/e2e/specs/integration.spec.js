@@ -1,3 +1,8 @@
+// To properly wait for the modal to close, we have to pipe the click and continue clicking until it
+//   works. In some test runs, the runner will try to click 17 times on the button!
+//   More info here: https://www.cypress.io/blog/2019/01/22/when-can-the-test-click/
+const click = $el => $el.click();
+
 describe('Integration tests', () => {
   it('renders at root level', () => {
     cy.visit('/');
@@ -15,7 +20,7 @@ describe('Integration tests', () => {
 
     cy.get('.navbar-nav > a.btn').as('button');
     cy.get('@button').should('have.attr', 'href', `#${anchorName}`);
-    cy.get('@button').should('have.text', 'Contact Us');
+    cy.get('@button').should('have.text', 'Contact us');
     cy.get(`a[name="${anchorName}"]`).should('exist');
 
     cy.get('@button').click();
@@ -69,12 +74,6 @@ describe('Integration tests', () => {
             cy.get('h3.modal-title').should('exist');
             cy.get('div.modal-body').should('exist');
           });
-
-          // To properly wait for the modal to close, we have to pipe the click and continue
-          //   clicking until it works. In some test runs, the runner will try to click 17 times
-          //   on the button!
-          //   More info here: https://www.cypress.io/blog/2019/01/22/when-can-the-test-click/
-          const click = $el => $el.click();
           cy.get('@modal').find('button.btn').pipe(click).should('not.be.visible')
             .then(() => {
               cy.get('@modal').should('not.be.visible');
@@ -138,6 +137,24 @@ describe('Integration tests', () => {
       .and('contain', `body=${encodeURIComponent(testMessage)}`);
   });
 
+  it('has the email address dialog', () => {
+    cy.get('.button-email').as('button');
+    cy.get('@button').should('have.attr', 'data-bs-toggle');
+    cy.get('#modal-email').as('modal');
+    cy.get('@modal').should('not.be.visible');
+    cy.get('@button').click();
+    cy.get('@modal').should('be.visible');
+    cy.get('@modal').within(() => {
+      cy.get('h3.modal-title').should('exist');
+      cy.get('div.modal-body').should('exist');
+      cy.get('.g-recaptcha').should('exist');
+    });
+    cy.get('@modal').find('button.btn').pipe(click).should('not.be.visible')
+      .then(() => {
+        cy.get('@modal').should('not.be.visible');
+      });
+  });
+
   it('has the icon links in footer', () => {
     cy.get('.footer-links a.icon-link').each((item) => {
       cy.get(item).as('icon-link');
@@ -146,8 +163,24 @@ describe('Integration tests', () => {
     });
   });
 
-  it('has the disclaimer text in footer', () => {
-    cy.get('.footer-disclaimer p.text-muted small').should('exist');
+  it('has the privacy policy link in footer', () => {
+    cy.get('.footer-privacy p.text-muted small a').as('privacy-policy-link');
+    cy.get('@privacy-policy-link').should('have.attr', 'data-bs-toggle');
+    cy.get('#modal-simplified-privacy-policy').as('modal-simplified');
+    cy.get('#modal-complete-privacy-policy').as('modal-complete');
+    cy.get('@modal-simplified').should('not.be.visible');
+    cy.get('@modal-complete').should('not.be.visible');
+    cy.get('@privacy-policy-link').click();
+    cy.get('@modal-simplified').should('be.visible');
+    cy.get('@modal-complete').should('not.be.visible');
+    cy.get('@modal-simplified').within(() => {
+      cy.get('h3.modal-title').should('exist');
+      cy.get('div.modal-body').should('exist');
+      cy.get('div.modal-footer').within(() => {
+        cy.get('.btn-primary').should('exist');
+        cy.get('.btn-secondary').pipe(click).should('not.be.visible');
+      });
+    });
   });
 
   it('has the copyright text in footer', () => {

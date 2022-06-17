@@ -18,6 +18,7 @@ const contactFormInit = () => {
   const Selector = {
     CONTACT_FORM: '.contact-form',
     SUCCESS_MESSAGE: '.success-message',
+    G_RECAPTCHA: '.g-recaptcha',
   };
 
   const contactForm = document.querySelector(Selector.CONTACT_FORM);
@@ -32,6 +33,18 @@ const contactFormInit = () => {
       removeClass(successMessage, 'd-none');
     };
   }
+
+  window.imNotARobot = () => {
+    const gRecaptcha = document.querySelector(Selector.G_RECAPTCHA);
+    if (gRecaptcha) {
+      const email = `${atob(USER)}\u0040${atob(HOST)}\u002e${atob(TLD)}`;
+      const anchor = document.createElement('a');
+      anchor.href = `mailto:${email}`;
+      anchor.text = email;
+      gRecaptcha.style.display = 'none';
+      gRecaptcha.after(anchor);
+    }
+  };
 };
 
 export default contactFormInit;

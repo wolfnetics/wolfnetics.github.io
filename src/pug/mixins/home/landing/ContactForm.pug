@@ -14,6 +14,17 @@ mixin ContactForm
           div.d-grid
             button.btn.btn-primary.btn-lg(type='submit') Send
         p.success-message.text-center.d-none Thank you for your message, we will be contacting you shortly...
+        h3.text-divider
+          span or
+        div.d-grid
+          button.button-email.btn.btn-secondary.btn-lg(href='#' data-bs-toggle='modal' data-bs-target='#modal-email') Show email address
+          div.modal.fade(id='modal-email' tabindex='-1' aria-labelledby='modal-email' aria-hidden='true')
+            div.modal-dialog
+              div.modal-content
+                h3.modal-title.display-7.text-dark.mt-3.ms-3(id='modal-email') Drop us a line
+                div.modal-body.mx-auto
+                  div.g-recaptcha(data-sitekey='6LeEdHkgAAAAAEyM1-GuZ_Brjfj0Y2__Y9-nIm3M' data-callback='imNotARobot')
+                button.btn.btn-primary.mx-3.mb-3(data-bs-dismiss='modal') Close
         p.company-info.mt-3.text-center.text-muted
           small
             | Registration Address: Mansion House, Manchester Road, Altrincham, Cheshire, WA14 4RW
