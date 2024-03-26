@@ -10,15 +10,23 @@ on:
     tags-ignore:
     - '**'
 
-  # Trigger the workflow on all pull requests
-  pull_request:
-
   # Allow workflow to be dispatched on demand
   workflow_dispatch:
 
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
 jobs:
-  ci:
-    name: ci
+  build:
+    name: build
     runs-on: ubuntu-20.04
     steps:
     - name: Checkout 🛎️
@@ -30,12 +38,21 @@ jobs:
     - name: Test ✅
       run: npm t
 
-    - name: Deploy 🚀
-      if: success() && github.ref == 'refs/heads/main'
-      uses: crazy-max/ghaction-github-pages@v2
+    - name: Upload ⬆️
+      if: github.ref == 'refs/heads/main'
+      uses: actions/upload-pages-artifact@v1
       with:
-        commit_message: Deployed to Github Pages.
-        fqdn: wolfnetics.com
-        build_dir: build/
-      env:
-        GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+        path: build/
+
+  deploy:
+    name: deploy
+    if: github.ref == 'refs/heads/main'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy 🚀
+        id: deployment
+        uses: actions/deploy-pages@v1
